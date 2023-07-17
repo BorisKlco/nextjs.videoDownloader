@@ -1,3 +1,4 @@
+import { Navbar } from "@/components";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Comic_Neue } from "next/font/google";
@@ -17,7 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={customFont.className}>{children}</body>
+      <body
+        className={`${customFont.className} flex min-h-screen flex-col items-center sm:pt-2`}
+      >
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
