@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Result } from ".";
 
 export default function Search() {
   return (
@@ -52,7 +53,9 @@ export default function Search() {
             />
           </button>
         </div>
-        <div></div>
+        <div>
+          <Result />
+        </div>
       </div>
     </div>
   );
