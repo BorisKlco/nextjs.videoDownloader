@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         main: "#EEE9D7",
         logo: "#ea5a47",
+        input: "#CDD5C6",
+        search: "#E8D4C6",
+        button: "#F28379",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
