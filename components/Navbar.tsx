@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="flex sm:gap-x-16 gap-x-4 text-3xl sm:text-4xl">
       <Link
         href="/"
-        className="flex items-center hover:underline hover:underline-offset-8 transition hover:text-red-400/80"
+        className="flex items-center hover:underline hover:underline-offset-8 hover:text-logo"
       >
         <Image
           src="/images/navbar/hacker-cat.svg"
@@ -18,7 +18,7 @@ export default function Navbar() {
       </Link>
       <Link
         href="/history"
-        className="flex items-center hover:underline hover:underline-offset-8 transition hover:text-red-400/80"
+        className="flex items-center hover:underline hover:underline-offset-8 hover:text-logo"
       >
         <Image
           src="/images/navbar/spider-web.svg"

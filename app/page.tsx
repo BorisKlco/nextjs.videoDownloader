@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="">
-      <section className="relative mt-8 sm:mt-16 h-full w-full flex items-center justify-center sm:gap-x-3">
+      <section className="relative select-none mt-8 sm:mt-16 h-full w-full flex items-center justify-center sm:gap-x-3">
         <Image
           src="/images/logo/yt.svg"
           width={155}
