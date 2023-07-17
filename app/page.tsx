@@ -1,3 +1,4 @@
+import { Search } from "@/components";
 import Image from "next/image";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
         />
         <h1 className="text-6xl sm:text-8xl">yt-mp3</h1>
       </section>
+      <Search />
     </main>
   );
 }
