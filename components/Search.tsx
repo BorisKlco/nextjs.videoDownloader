@@ -3,13 +3,14 @@ import Image from "next/image";
 export default function Search() {
   return (
     <div className="pt-16">
-      <div className="flex flex-col bg-search rounded-3xl w-[50vh] h-auto">
+      <div className="flex flex-col bg-search rounded-3xl w-min-16 w-full h-auto">
         <div className="flex relative">
           <input
             type="text"
             className="
             group
-            text-xl
+            text-l
+            md:text-xl
             px-6
             underline
             rounded-3xl 
@@ -26,7 +27,8 @@ export default function Search() {
             items-center
             h-full 
             right-0 
-            text-3xl 
+            text-xl
+            md:text-3xl 
             pl-4
             pr-2
             rounded-full 
@@ -50,12 +52,7 @@ export default function Search() {
             />
           </button>
         </div>
-        <div>
-          <h1>asdasd</h1>
-          <p>321321</p>
-          <p>321321</p>
-          <p>321321</p>
-        </div>
+        <div></div>
       </div>
     </div>
   );
