@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+// Thumb
+// "https://i.ytimg.com/vi/{VideoID}/maxresdefault.jpg"
+
 export default function Result() {
   return (
     <div className="py-4 px-8">
