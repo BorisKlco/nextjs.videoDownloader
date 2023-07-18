@@ -3,9 +3,9 @@ import { Result } from ".";
 
 export default function Search() {
   return (
-    <div className="pt-16">
-      <div className="flex flex-col bg-search rounded-3xl w-min-16 w-full h-auto">
-        <div className="flex relative">
+    <div className="pt-16 ">
+      <div className="flex flex-col bg-search rounded-3xl w-min-16 w-full h-auto border-b border-x border-black">
+        <div className="flex relative drop-shadow-sm">
           <input
             type="text"
             className="
