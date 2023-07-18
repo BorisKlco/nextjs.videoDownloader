@@ -10,7 +10,7 @@ export default function Input() {
 
   return (
     <form
-      className="flex relative drop-shadow-sm"
+      className="flex relative"
       onSubmit={(e) => {
         e.preventDefault();
         urlFix = url.split("/");
@@ -27,7 +27,7 @@ export default function Input() {
         onChange={(e) => setUrl(e.target.value)}
         type="text"
         className="group text-l md:text-xl px-6 underline rounded-3xl 
-            h-[3rem] w-full bg-input focus:outline-1 border border-black"
+            h-[3rem] w-full bg-input focus:outline-none border border-black"
       />
       <button
         className="absolute flex justify-center items-center h-full right-0 text-xl md:text-3xl 

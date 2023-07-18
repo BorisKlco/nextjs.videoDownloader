@@ -6,12 +6,14 @@ type SearchProps = {
 
 export default function Search({ url }: SearchProps) {
   return (
-    <div className="pt-16 ">
-      <div className="flex flex-col bg-search rounded-3xl w-min-16 w-full h-auto border-b border-x border-black">
+    <div className="mt-16 rounded-3xl border border-black">
+      <div className="flex flex-col bg-search rounded-3xl w-min-16 w-full h-auto">
         <Input />
-        <div>
-          <Result url={url} />
-        </div>
+        {url != "/" && (
+          <div>
+            <Result url={url} />
+          </div>
+        )}
       </div>
     </div>
   );
