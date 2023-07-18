@@ -1,6 +1,7 @@
-import { Search } from "@/components";
+import { Loading, Search } from "@/components";
 import { PageProps } from "@/type";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function Home({ params }: PageProps) {
   return (
@@ -15,7 +16,9 @@ export default function Home({ params }: PageProps) {
         />
         <h1 className="text-6xl sm:text-8xl">yt-mp3</h1>
       </section>
-      <Search url={params.id} />
+      <Suspense fallback={<Loading />}>
+        <Search url={params.id} />
+      </Suspense>
     </main>
   );
 }
