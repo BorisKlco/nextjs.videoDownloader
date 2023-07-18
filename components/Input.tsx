@@ -14,7 +14,8 @@ export default function Input() {
       onSubmit={(e) => {
         e.preventDefault();
         urlFix = url.split("/");
-        urlFix = urlFix[urlFix.length - 1].split("=");
+        urlFix = urlFix[urlFix.length - 1].split("&");
+        urlFix = urlFix[0].split("=");
         if (urlFix.length === 2) {
           router.push(`/${urlFix[1]}`);
         } else {
