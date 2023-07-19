@@ -11,7 +11,9 @@ type ResultProps = {
 
 export default async function Result({ url }: ResultProps) {
   if (!url) return "";
-  const res = await fetch(`http://127.0.0.1:8080/fetch_metadata/${url}`);
+  const res = await fetch(
+    `https://api.tricksofthe.trade/fetch_metadata/${url}`
+  );
   const json = await res.json();
   if (json[0].error) {
     return <UrlError error={json[0].error} />;
