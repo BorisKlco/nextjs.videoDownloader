@@ -1,10 +1,15 @@
 import Image from "next/image";
 
-export default function UrlError() {
+type ErrorProps = {
+  error: string;
+};
+
+export default function UrlError({ error }: ErrorProps) {
+  console.log(error);
   return (
     <div className="flex justify-center items-center">
       <h1 className="truncate my-4 text-xl sm:text-3xl">
-        Something woOong. Check URL?
+        Something woOong. {error}?
       </h1>
       <Image
         src="/images/search/wrong.svg"

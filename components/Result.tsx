@@ -12,22 +12,23 @@ export default async function Result({ url }: ResultProps) {
   if (!url) return "";
   const res = await fetch(`http://127.0.0.1:8080/fetch_metadata/${url}`);
   const json = await res.json();
-  if (json.error) {
-    return <UrlError />;
+  console.log(json);
+  if (json[0].error) {
+    return <UrlError error={json[0].error} />;
   }
-  const videoDate = moment(json.upload_date).format("MMMM Do YYYY");
+  const videoDate = moment(json[1].upload_date).format("MMMM Do YYYY");
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <div className="py-4 px-6">
         <div className="flex justify-between text-2xl">
-          <p className="truncate max-w-2xl">{json.fulltitle}</p>
+          <p className="truncate max-w-2xl">{json[1].fulltitle}</p>
           <p className="truncate max-w-fit invisible xl:visible">{videoDate}</p>
         </div>
         <div className="flex mt-4 gap-2 flex-wrap">
           <div className="flex flex-col items-center sm:items-left">
             <Image
               className="object-contain md:max-w-xs xl:max-w-md rounded-3xl border border-black"
-              src={`https://i.ytimg.com/vi/${json.id}/maxresdefault.jpg`}
+              src={`https://i.ytimg.com/vi/${json[1].id}/maxresdefault.jpg`}
               width={1280}
               height={720}
               quality={1}
@@ -38,7 +39,7 @@ export default async function Result({ url }: ResultProps) {
 
             <Link
               className="flex items-center justify-center py-3 hover:underline"
-              href={`https://i.ytimg.com/vi/${json.id}/maxresdefault.jpg`}
+              href={`https://i.ytimg.com/vi/${json[1].id}/maxresdefault.jpg`}
               target="_blank"
             >
               <p className="text-sm sm:text-md md:text-lg">
@@ -68,7 +69,7 @@ export default async function Result({ url }: ResultProps) {
                 href="/"
                 className="flex items-center justify-center bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] rounded-full font-semibold  border border-black transition hover:bg-logo"
               >
-                720p
+                {json[0].format_note}
               </Link>
             </div>
           </div>

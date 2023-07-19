@@ -28,9 +28,13 @@ export default function Input() {
       <input
         onChange={(e) => setUrl(e.target.value)}
         type="text"
-        placeholder={`https://youtu.be${pathname}`}
+        placeholder={
+          pathname === "/"
+            ? "https://youtu.be/NtfbWkxJTHw"
+            : `https://youtu.be${pathname}`
+        }
         className="group text-l md:text-xl px-6 focus:underline rounded-3xl 
-            h-[3rem] w-full bg-input focus:outline-none border border-black placeholder:no-underline"
+            h-[3rem] w-full bg-input focus:outline-none placeholder:text-green-900/30 border border-black placeholder:no-underline"
       />
       <button
         className="absolute flex justify-center items-center h-full right-0 text-xl md:text-3xl 
