@@ -7,14 +7,14 @@ def download_file(video_id, option):
     if option == "video":
         ydl_opts = {
             "format": "248 + bestaudio/best",
-            "ffmpeg_location": "/ffmpeg/ffmpeg.exe",
+            "ffmpeg_location": "/ffmpeg/ffmpeg",
             "outtmpl": "%(id)s.%(ext)s",
             "merge_output_format": "mp4",
         }
     else:
         ydl_opts = {
             "format": "bestaudio/best",
-            "ffmpeg_location": "/ffmpeg/ffmpeg.exe",
+            "ffmpeg_location": "/ffmpeg/ffmpeg",
             "outtmpl": "%(id)s.%(ext)s",
             "postprocessors": [
                 {
