@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${customFont.className} bg-main flex min-h-screen flex-col items-center sm:pt-2`}
+        className={`${customFont.className} bg-main flex min-h-screen flex-col items-center antialiased`}
       >
         <Navbar />
         {children}

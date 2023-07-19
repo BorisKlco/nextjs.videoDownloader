@@ -2,10 +2,12 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export default function Input() {
   const [url, setUrl] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
   let urlFix;
 
   return (
@@ -26,8 +28,9 @@ export default function Input() {
       <input
         onChange={(e) => setUrl(e.target.value)}
         type="text"
-        className="group text-l md:text-xl px-6 underline rounded-3xl 
-            h-[3rem] w-full bg-input focus:outline-none border border-black"
+        placeholder={`https://youtu.be${pathname}`}
+        className="group text-l md:text-xl px-6 focus:underline rounded-3xl 
+            h-[3rem] w-full bg-input focus:outline-none border border-black placeholder:no-underline"
       />
       <button
         className="absolute flex justify-center items-center h-full right-0 text-xl md:text-3xl 

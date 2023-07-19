@@ -9,11 +9,12 @@ CORS(app)
 
 @app.route("/", methods=["GET"])
 def main_route():
-    test = yt_formater.yt_formater("https://www.youtube.com/watch?v=Gp8Knx9wdeA")
-    return jsonify(test)
+    test = yt_formater.yt_formater("https://www.youtube.com/watch?v=urMxgevzd4c")
+    test2 = {"myTest": test[0]}
+    return jsonify(test2)
 
 
-@app.route("/a/<video_id>", methods=["GET"])
+@app.route("/fetch_metadata/<video_id>", methods=["GET"])
 def video_json(video_id):
     with yt_dlp.YoutubeDL({}) as ydl:
         try:
