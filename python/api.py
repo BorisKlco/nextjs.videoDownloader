@@ -29,7 +29,11 @@ def download():
     video_id = request.args.get("id")
     option = request.args.get("option")
     print(video_id, option)
-    dummy = "/thumb.jpg"
+    try:
+        file = yt_download.download_file(video_id, option)
+    except:
+        return jsonify({"error": "Something is wrong, try again..."})
+    dummy = "/" + file
     return send_file(dummy, as_attachment=True)
 
 

@@ -54,18 +54,28 @@ export default async function Result({ url }: ResultProps) {
             </Link>
           </div>
           <div className="flex flex-col justify-center mb-10 gap-8 w-full md:w-1/2">
-            <div className="flex items-center justify-between gap-4 mx-auto">
-              <p className="text-2xl lg:text-4xl">Audio</p>
-              <Download id={json[1].id} option="audio" />
-            </div>
-            <div className="flex items-center justify-between gap-4 mx-auto">
-              <p className="text-2xl lg:text-4xl">Video</p>
-              <Download
-                id={json[1].id}
-                option="video"
-                format={json[0].format_note}
-              />
-            </div>
+            {json[1].duration > 5000 ? (
+              <div>
+                <p className="text-xl lg:text-2xl text-center">
+                  Sorry, video longer than 1h:30min
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center justify-between gap-4 mx-auto">
+                  <p className="text-2xl lg:text-4xl">Audio</p>
+                  <Download id={json[1].id} option="audio" />
+                </div>
+                <div className="flex items-center justify-between gap-4 mx-auto">
+                  <p className="text-2xl lg:text-4xl">Video</p>
+                  <Download
+                    id={json[1].id}
+                    option="video"
+                    format={json[0].format_note}
+                  />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
