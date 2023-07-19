@@ -2,6 +2,7 @@ import { Navbar } from "@/components";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Comic_Neue } from "next/font/google";
+import ToasterProvider from "@/components/ToasterProvider";
 
 const customFont = Comic_Neue({ weight: "400", subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body
         className={`${customFont.className} bg-main flex min-h-screen flex-col items-center antialiased`}
       >
+        <ToasterProvider />
         <Navbar />
         {children}
       </body>

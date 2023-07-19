@@ -3,6 +3,7 @@ import Link from "next/link";
 import moment from "moment";
 import UrlError from "./UrlError";
 import { Suspense } from "react";
+import Download from "./Download";
 
 type ResultProps = {
   url: string;
@@ -12,7 +13,6 @@ export default async function Result({ url }: ResultProps) {
   if (!url) return "";
   const res = await fetch(`http://127.0.0.1:8080/fetch_metadata/${url}`);
   const json = await res.json();
-  console.log(json);
   if (json[0].error) {
     return <UrlError error={json[0].error} />;
   }
@@ -28,7 +28,7 @@ export default async function Result({ url }: ResultProps) {
           <div className="flex flex-col items-center sm:items-left">
             <Image
               className="object-contain md:max-w-xs xl:max-w-md rounded-3xl border border-black"
-              src={`https://i.ytimg.com/vi/${json[1].id}/maxresdefault.jpg`}
+              src={json[1].thumbnail}
               width={1280}
               height={720}
               quality={1}
@@ -39,7 +39,7 @@ export default async function Result({ url }: ResultProps) {
 
             <Link
               className="flex items-center justify-center py-3 hover:underline"
-              href={`https://i.ytimg.com/vi/${json[1].id}/maxresdefault.jpg`}
+              href={json[1].thumbnail}
               target="_blank"
             >
               <p className="text-sm sm:text-md md:text-lg">
@@ -56,21 +56,15 @@ export default async function Result({ url }: ResultProps) {
           <div className="flex flex-col justify-center mb-10 gap-8 w-full md:w-1/2">
             <div className="flex items-center justify-between gap-4 mx-auto">
               <p className="text-2xl lg:text-4xl">Audio</p>
-              <Link
-                href="/"
-                className="flex items-center justify-center bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] rounded-full font-semibold  border border-black transition hover:bg-logo"
-              >
-                mp3
-              </Link>
+              <Download id={json[1].id} option="audio" />
             </div>
             <div className="flex items-center justify-between gap-4 mx-auto">
               <p className="text-2xl lg:text-4xl">Video</p>
-              <Link
-                href="/"
-                className="flex items-center justify-center bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] rounded-full font-semibold  border border-black transition hover:bg-logo"
-              >
-                {json[0].format_note}
-              </Link>
+              <Download
+                id={json[1].id}
+                option="video"
+                format={json[0].format_note}
+              />
             </div>
           </div>
         </div>

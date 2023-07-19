@@ -1,6 +1,8 @@
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
+from flask import send_file
 from flask_cors import CORS
 import yt_formater
+import yt_download
 
 app = Flask(__name__)
 CORS(app)
@@ -20,6 +22,15 @@ def video_json(video_id):
         return jsonify(video_formats, metadata)
     except:
         return jsonify({"error": "Bad URL"}, {"metadata": "Bad URL"})
+
+
+@app.route("/download", methods=["GET"])
+def download():
+    video_id = request.args.get("id")
+    option = request.args.get("option")
+    print(video_id, option)
+    dummy = "/thumb.jpg"
+    return send_file(dummy, as_attachment=True)
 
 
 if __name__ == "__main__":
