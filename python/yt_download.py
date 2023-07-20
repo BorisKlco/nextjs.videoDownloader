@@ -1,7 +1,7 @@
 import os
-from yt_dlp import YoutubeDL
 import random
 import string
+from yt_dlp import YoutubeDL
 
 
 def download_file(video_id, option, media_format, format_id):
@@ -19,20 +19,20 @@ def download_file(video_id, option, media_format, format_id):
     if option == "video":
         ydl_opts = {
             "format": format_id + " + bestaudio/best",
-            "ffmpeg_location": path + "/ffmpeg/ffmpeg.exe",
+            "ffmpeg_location": path + "/ffmpeg/ffmpeg",
             "outtmpl": path + "/files/" + random_string + "%(id)s.%(ext)s",
             "merge_output_format": "mp4",
         }
     elif media_format == "webm":
         ydl_opts = {
             "format": "bestaudio/best",
-            "ffmpeg_location": path + "/ffmpeg/ffmpeg.exe",
+            "ffmpeg_location": path + "/ffmpeg/ffmpeg",
             "outtmpl": path + "/files/" + random_string + "%(id)s.%(ext)s",
         }
     else:
         ydl_opts = {
             "format": "bestaudio/best",
-            "ffmpeg_location": path + "/ffmpeg/ffmpeg.exe",
+            "ffmpeg_location": path + "/ffmpeg/ffmpeg",
             "outtmpl": path + "/files/" + random_string + "%(id)s.%(ext)s",
             "postprocessors": [
                 {
