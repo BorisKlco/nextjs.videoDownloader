@@ -1,20 +1,30 @@
 "use client";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 type DownloadProps = {
   id: string;
   option: string;
-  format?: string;
+  format: string;
+  format_id?: string;
 };
 
-export default function Download({ id, option, format = "" }: DownloadProps) {
+export default function Download({
+  id,
+  option,
+  format,
+  format_id,
+}: DownloadProps) {
   return (
     <a
-      onClick={() => toast.success("Preparing... wait a few sec 🎧")}
-      href={`https://api.tricksofthe.trade/download?id=${id}&option=${option}`}
-      className="flex items-center justify-center bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] rounded-full font-semibold  border border-black transition hover:bg-logo"
+      onClick={() => toast.success("Preparing it for uWu.. 🐱")}
+      href={`${process.env.NEXT_PUBLIC_DOWNLOAD_API}/download?id=${id}&option=${option}&format=${format}&format_id=${format_id}`}
+      className="flex items-center justify-center 
+      bg-button max-sm:w-[6rem] w-[8rem] h-[2rem] 
+      rounded-full text-sm font-semibold 
+      border border-black/40 transition 
+      hover:bg-logo hover:border-black hover:border-2"
     >
-      {format ? format : "mp3"}
+      {format}
     </a>
   );
 }

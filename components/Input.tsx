@@ -34,7 +34,7 @@ export default function Input() {
             : `https://youtu.be${pathname}`
         }
         className="group text-l md:text-xl px-6 focus:underline rounded-3xl 
-            h-[3rem] w-full bg-input focus:outline-none placeholder:text-green-900/30 border border-black placeholder:no-underline"
+            h-[3rem] w-full bg-input focus:outline-none placeholder:text-green-900/30 border border-black/40 placeholder:no-underline"
       />
       <button
         className="absolute flex justify-center items-center h-full right-0 text-xl md:text-3xl 

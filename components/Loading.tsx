@@ -1,9 +1,9 @@
-import { Input } from ".";
 import Image from "next/image";
+import Input from "./Input";
 
 export default function Loading() {
   return (
-    <div className="mt-16 rounded-3xl border border-black">
+    <div className="mt-6 md:mt-16 rounded-3xl border border-black">
       <div className="flex flex-col bg-search rounded-3xl w-min-16 w-full h-auto">
         <Input />
         <div className="flex justify-center items-center">

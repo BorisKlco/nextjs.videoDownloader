@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Comic_Neue } from "next/font/google";
 import ToasterProvider from "@/components/ToasterProvider";
+import Image from "next/image";
 
 const customFont = Comic_Neue({ weight: "400", subsets: ["latin"] });
 
@@ -24,7 +25,19 @@ export default function RootLayout({
       >
         <ToasterProvider />
         <Navbar />
-        {children}
+        <main className="w-full px-2 lg:w-4/5 2xl:w-4/5 max-w-5xl mb-8">
+          <section className="relative select-none mt-6 md:mt-10 h-full w-full flex items-center justify-center sm:gap-x-3 ">
+            <Image
+              src="/images/logo/yt.svg"
+              width={155}
+              height={170}
+              className="object-contain -rotate-12 h-[8rem] sm:h-full "
+              alt="ytb logo"
+            />
+            <h1 className="text-6xl sm:text-8xl">yt-mp3</h1>
+          </section>
+          {children}
+        </main>
       </body>
     </html>
   );
