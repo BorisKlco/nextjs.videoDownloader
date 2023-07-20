@@ -56,5 +56,5 @@ def download_file(video_id, option, media_format, format_id):
             return "Error"
 
 
-# if __name__ == "__main__":
-#     download_file("SFZWaaK7KXk", "video", "720p60", "302")
+if __name__ == "__main__":
+    download_file("SFZWaaK7KXk", "video", "720p60", "302")

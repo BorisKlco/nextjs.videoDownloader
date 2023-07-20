@@ -19,7 +19,7 @@ export default function ToasterProvider() {
           primary: "#ea5a47",
           secondary: "#EEE9D7",
         },
-        duration: 4000,
+        duration: 5000,
       }}
     />
   );

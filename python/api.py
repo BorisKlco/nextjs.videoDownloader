@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, redirect, jsonify
 from flask import send_file
 from flask_cors import CORS
 import yt_formater
@@ -31,11 +31,16 @@ def download():
     option = request.args.get("option")
     media_format = request.args.get("format")
     format_id = request.args.get("format_id")
-    path = os.getcwd()
     try:
         file = yt_download.download_file(video_id, option, media_format, format_id)
+        return redirect("/serve_file/" + file)
     except:
         return jsonify({"error": "Something is wrong, try again..."})
+
+
+@app.route("/serve_file/<file>")
+def dynamic_redirect(file):
+    path = os.getcwd()
     download_file = path + "/files/" + file
     return send_file(download_file, as_attachment=True)
 

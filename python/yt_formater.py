@@ -2,7 +2,7 @@ from yt_dlp import YoutubeDL
 
 
 def yt_formater(url):
-    FORMATS = ["1080p60", "720p60", "1080p", "720p", "480p", "360p"]
+    FORMATS = ["1080", "720", "480", "360", "240"]
 
     def live_stream():
         return {"error": "LiveStream not supported"}
@@ -13,10 +13,8 @@ def yt_formater(url):
             if len(correct_formats) < 2:
                 for format in info["formats"][::-1]:
                     try:
-                        if (
-                            format["format_note"] == resolution
-                            and format["ext"] == "webm"
-                        ):
+                        format_fix = format["format_note"].split("p")
+                        if format_fix[0] == resolution:
                             correct_formats.append(format)
                             break
                     except:
