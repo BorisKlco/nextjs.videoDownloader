@@ -8,20 +8,38 @@ export default function Input() {
   const [url, setUrl] = useState("");
   const router = useRouter();
   const pathname = usePathname();
-  let urlFix;
+  let urlSplit;
+  let idSplit;
+  let finalURL;
 
   return (
     <form
       className="flex relative"
       onSubmit={(e) => {
         e.preventDefault();
-        urlFix = url.split("/");
-        urlFix = urlFix[urlFix.length - 1].split("&");
-        urlFix = urlFix[0].split("=");
-        if (urlFix.length === 2) {
-          router.push(`/${urlFix[1]}`);
+        // urlFix = urlFix[urlFix.length - 1].split("&");
+        // urlFix = urlFix[0].split("=");
+        // if (urlFix.length === 2) {
+        //   router.push(`/${urlFix[1]}`);
+        // } else {
+        //   router.push(`/${urlFix[0]}`);
+        // }
+        if (url.indexOf("youtube") != -1) {
+          urlSplit = url.split("/");
+          idSplit = urlSplit[urlSplit.length - 1].split("&");
+          idSplit = idSplit[0].split("=");
+          console.log(idSplit[idSplit.length - 1]);
+          finalURL = idSplit[idSplit.length - 1] + "?site=youtube";
+          router.push(`/${finalURL}`);
+        } else if (url.indexOf("tiktok") != -1) {
+          urlSplit = url.split("/");
+          idSplit = urlSplit[urlSplit.length - 1].split("&");
+          idSplit = idSplit[0].split("=");
+          idSplit = idSplit[0].split("?");
+          finalURL = idSplit[0] + "?site=tiktok";
+          router.push(`/${finalURL}`);
         } else {
-          router.push(`/${urlFix[0]}`);
+          console.log("123");
         }
       }}
     >
