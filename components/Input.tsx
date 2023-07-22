@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function Input() {
   const [url, setUrl] = useState("");
@@ -17,29 +18,20 @@ export default function Input() {
       className="flex relative"
       onSubmit={(e) => {
         e.preventDefault();
-        // urlFix = urlFix[urlFix.length - 1].split("&");
-        // urlFix = urlFix[0].split("=");
-        // if (urlFix.length === 2) {
-        //   router.push(`/${urlFix[1]}`);
-        // } else {
-        //   router.push(`/${urlFix[0]}`);
-        // }
         if (url.indexOf("youtube") != -1) {
           urlSplit = url.split("/");
           idSplit = urlSplit[urlSplit.length - 1].split("&");
           idSplit = idSplit[0].split("=");
-          console.log(idSplit[idSplit.length - 1]);
           finalURL = idSplit[idSplit.length - 1] + "?site=youtube";
           router.push(`/${finalURL}`);
         } else if (url.indexOf("tiktok") != -1) {
-          urlSplit = url.split("/");
-          idSplit = urlSplit[urlSplit.length - 1].split("&");
-          idSplit = idSplit[0].split("=");
-          idSplit = idSplit[0].split("?");
-          finalURL = idSplit[0] + "?site=tiktok";
+          idSplit = url.split("@");
+          idSplit = idSplit[1].split("?");
+          idSplit = idSplit[0].split("/video/");
+          finalURL = idSplit[0] + "?tiktok=" + idSplit[1] + "?site=tiktok";
           router.push(`/${finalURL}`);
         } else {
-          console.log("123");
+          toast.error("wOng URL? uWu🐱", { duration: 1500 });
         }
       }}
     >

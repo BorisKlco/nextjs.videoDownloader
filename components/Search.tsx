@@ -3,9 +3,11 @@ import { Result, Input, Loading } from ".";
 
 type SearchProps = {
   url: string;
+  site?: string;
+  tiktok?: string;
 };
 
-export default function Search({ url }: SearchProps) {
+export default function Search({ url, site = "", tiktok = "" }: SearchProps) {
   return (
     <Suspense fallback={<Loading />}>
       <div className="mt-6 md:mt-16 rounded-3xl border border-black">
@@ -13,7 +15,7 @@ export default function Search({ url }: SearchProps) {
           <Input />
           {url != "/" && (
             <div>
-              <Result url={url} />
+              <Result url={url} site={site} tiktok={tiktok} />
             </div>
           )}
         </div>

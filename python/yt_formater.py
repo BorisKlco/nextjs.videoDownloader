@@ -1,7 +1,7 @@
 from yt_dlp import YoutubeDL
 
 
-def yt_formater(url):
+def yt_formater(id):
     FORMATS = ["1080", "720", "480", "360", "240"]
 
     def live_stream():
@@ -23,6 +23,7 @@ def yt_formater(url):
         return correct_formats
 
     with YoutubeDL() as ydl:
+        url = "https://www.youtube.com/watch?v=" + id
         info = ydl.extract_info(url, download=False)
         ydl.sanitize_info(info)
 

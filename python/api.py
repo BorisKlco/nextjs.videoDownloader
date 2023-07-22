@@ -4,6 +4,7 @@ from flask import send_file
 from flask_cors import CORS
 import yt_formater
 import yt_download
+from yt_dlp import YoutubeDL
 
 app = Flask(__name__)
 CORS(app)
@@ -14,15 +15,35 @@ def main_route():
     return jsonify({"error": "Bad URL"}, {})
 
 
+@app.route("/tiktok", methods=["GET"])
+def tiktok():
+    url = "https://www.tiktok.com/@stanleythestanman/video/7254736960290409770"
+
+    with YoutubeDL() as ydl:
+        info = ydl.extract_info(url, download=False)
+        ydl.sanitize_info(info)
+        return jsonify(info)
+
+
 @app.route("/fetch_metadata/<video_id>", methods=["GET"])
 def video_json(video_id):
-    try:
-        video_formats, metadata = yt_formater.yt_formater(
-            "https://www.youtube.com/watch?v=" + video_id
+    if request.args.get("site") == "youtube":
+        try:
+            video_formats, metadata = yt_formater.yt_formater(video_id)
+            return jsonify(video_formats, metadata)
+        except:
+            return jsonify({"error": "Bad URL"}, {"metadata": "Bad URL"})
+    else:
+        url = (
+            "https://www.tiktok.com/@"
+            + video_id
+            + "/video/"
+            + request.args.get("tiktok")
         )
-        return jsonify(video_formats, metadata)
-    except:
-        return jsonify({"error": "Bad URL"}, {"metadata": "Bad URL"})
+        with YoutubeDL() as ydl:
+            info = ydl.extract_info(url, download=False)
+            ydl.sanitize_info(info)
+            return jsonify([info["formats"][len(info["formats"]) - 1]], info)
 
 
 @app.route("/download", methods=["GET"])
@@ -46,4 +67,4 @@ def dynamic_redirect(file):
 
 
 if __name__ == "__main__":
-    app.run(threaded=True, debug=False, port=8080)
+    app.run(threaded=True, debug=True, port=8080)

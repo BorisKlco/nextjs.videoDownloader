@@ -8,9 +8,10 @@ import Image from "next/image";
 const customFont = Comic_Neue({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "yt-mp3 - audio, video, thumbnail downloader",
+  title: "Scrappy🐱 - audio, video, thumbnail downloader",
   description:
-    "Do you need download youtube video? mp3, webm, mp4 formats, jpg thumbnail downloader...",
+    "Do you need download youtube, tiktok video? mp3, webm, mp4 formats, jpg thumbnail downloader...",
+  keywords: ["tiktok", "youtube", "download"],
 };
 
 export default function RootLayout({
@@ -35,9 +36,9 @@ export default function RootLayout({
                 className="object-contain -rotate-12 h-[8rem] sm:h-full "
                 alt="ytb logo"
               />
-              <h1 className="text-6xl sm:text-8xl">yTok</h1>
+              <h1 className="text-6xl sm:text-8xl">Scrappy</h1>
             </div>
-            <h3 className="text-xl">Youtube, TikTok downloader</h3>
+            <h3 className="text-xl">Youtube & TikTok downloader</h3>
           </section>
           {children}
         </main>
