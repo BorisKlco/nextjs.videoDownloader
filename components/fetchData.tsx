@@ -1,8 +1,8 @@
-export default async function fetchData({ queryKey }) {
+import { QueryFunctionContext } from "@tanstack/react-query";
+export default async function fetchData({ queryKey }: QueryFunctionContext) {
   const url = queryKey[1];
-  console.log("q", url);
 
-  const res = await fetch(`http://127.0.0.1:8080/test`, {
+  const res = await fetch(`http://127.0.0.1:8080/extract_info`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

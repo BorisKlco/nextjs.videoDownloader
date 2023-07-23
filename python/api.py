@@ -1,8 +1,8 @@
 import os
-from flask import Flask, request, redirect, jsonify
+from flask import Flask, request, jsonify
 from flask import send_file
 from flask_cors import CORS
-import yt_download
+import download
 from yt_dlp import YoutubeDL
 
 app = Flask(__name__)
@@ -11,10 +11,10 @@ CORS(app)
 
 @app.route("/", methods=["GET"])
 def main_route():
-    return jsonify({"error": "Bad URL"}, {})
+    return jsonify({"error": "Wrong URL"})
 
 
-@app.route("/test", methods=["POST"])
+@app.route("/extract_info", methods=["POST"])
 def post_test():
     data = request.json
     with YoutubeDL() as ydl:
@@ -25,17 +25,12 @@ def post_test():
             return {"error": "Wrong URL"}
 
 
-@app.route("/showme", methods=["POST"])
+@app.route("/get_me_link", methods=["POST"])
 def show():
     data = request.json
     print(data)
-    file = yt_download.download_file(data["url"], data["type"])
+    file = download.get_file(data["url"], data["type"])
     return {"url": "http://127.0.0.1:8080/serve_file/" + file}
-
-
-@app.route("/ok/<test>", methods=["GET"])
-def test2(test):
-    return {"url": "http://127.0.0.1:8080/serve_file/" + test}
 
 
 @app.route("/serve_file/<file>")

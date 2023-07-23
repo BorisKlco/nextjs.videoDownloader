@@ -4,9 +4,8 @@ import string
 from yt_dlp import YoutubeDL
 
 
-def download_file(url, type):
+def get_file(url, video_type):
     path = os.getcwd()
-    print(url, type)
 
     def generate_random_string(length):
         characters = string.ascii_letters + string.digits
@@ -16,7 +15,7 @@ def download_file(url, type):
 
     random_string = generate_random_string(8)
 
-    if type == "video":
+    if video_type == "video":
         ydl_opts = {
             "format": "bestvideo[height<=1080]+bestaudio/best",
             "ffmpeg_location": path + "/ffmpeg/ffmpeg.exe",
@@ -24,7 +23,7 @@ def download_file(url, type):
             "merge_output_format": "mp4",
         }
 
-    if type == "audio":
+    if video_type == "audio":
         ydl_opts = {
             "format": "bestaudio/best",
             "ffmpeg_location": path + "/ffmpeg/ffmpeg.exe",
@@ -43,7 +42,7 @@ def download_file(url, type):
 
     with YoutubeDL(ydl_opts) as ydl:
         ydl.download(url)
-        if type == "video":
+        if video_type == "video":
             return random_string + ".mp4"
-        else:
+        if video_type == "audio":
             return random_string + ".mp3"

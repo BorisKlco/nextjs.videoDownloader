@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import fetchLink from "./fetchLink";
 import { AiOutlineLoading } from "react-icons/Ai";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type DownloadProps = {
   url: string;
@@ -12,9 +12,8 @@ type DownloadProps = {
 };
 
 export default function Download({ url, type, format }: DownloadProps) {
-  const router = useRouter();
-  const test = { url: url, type: type };
-  const link = useQuery(["link", test], fetchLink, {
+  const dataForFetch = { url: url, type: type };
+  const link = useQuery(["link", dataForFetch], fetchLink, {
     enabled: false,
   });
 
@@ -34,13 +33,20 @@ export default function Download({ url, type, format }: DownloadProps) {
         </button>
       ) : link.isFetched ? (
         <button
-          className="flex items-center justify-center 
+          className="flex gap-x-2 items-center justify-center 
     bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] 
     rounded-full text-sm md:text-xl font-semibold 
     border border-black/40 transition 
     hover:bg-logo hover:border-black hover:border-2"
         >
-          <a href={linkData.url}>Click to Download</a>
+          <a href={linkData.url}>Download</a>
+          <Image
+            className="object-fit"
+            src="/images/search/download.svg"
+            width={32}
+            height={32}
+            alt="download"
+          />
         </button>
       ) : (
         <button

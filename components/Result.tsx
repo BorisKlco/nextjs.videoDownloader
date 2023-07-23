@@ -18,7 +18,6 @@ type ResultDataProps = {
 };
 
 export default function Result({ data }: ResultDataProps) {
-  console.log(data);
   if (data.error || data.length === 0) {
     return (
       <div className="flex justify-center items-center">
@@ -86,11 +85,11 @@ export default function Result({ data }: ResultDataProps) {
             ) : (
               <>
                 <div className="flex items-center justify-between gap-2 mx-auto">
-                  <p className="text-xl lg:text-3xl">Audio</p>
+                  <p className="text-xl lg:text-3xl hidden sm:block">Audio</p>
                   <Download url={data.original_url} type="audio" format="MP3" />
                 </div>
                 <div className="flex items-center justify-between gap-2 mx-auto">
-                  <p className="text-xl lg:text-3xl">Video</p>
+                  <p className="text-xl lg:text-3xl hidden sm:block">Video</p>
                   <Download url={data.original_url} type="video" format="MP4" />
                 </div>
               </>

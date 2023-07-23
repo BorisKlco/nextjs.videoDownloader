@@ -1,7 +1,7 @@
 "use client";
-import { Loading, Result } from ".";
+import { Result } from ".";
 import Image from "next/image";
-import { FormEvent, Suspense, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchData from "./fetchData";
 import toast from "react-hot-toast";
@@ -10,9 +10,9 @@ export default function Search() {
   const [url, setUrl] = useState<String>("");
   const result = useQuery(["url", url], fetchData, { enabled: !!url });
   const resultData = result?.data ?? [];
-  const supportedSites = ["youtube", "tiktok", "twitter", "reddit"];
+  const supportedSites = ["youtube", "tiktok", "twitch", "twitter", "reddit"];
 
-  function checkSupported(userInput: String, array: String[]) {
+  function checkSupported(userInput: String) {
     return supportedSites.some((item) => userInput.includes(item));
   }
 
@@ -25,7 +25,7 @@ export default function Search() {
             e.preventDefault();
             const formData = new FormData(e.target as HTMLFormElement);
             const extractURL = formData.get("url") as String;
-            if (checkSupported(extractURL, supportedSites)) {
+            if (checkSupported(extractURL)) {
               if (extractURL.indexOf("list") === -1) {
                 setUrl(extractURL);
               } else {

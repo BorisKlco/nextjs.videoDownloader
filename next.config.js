@@ -16,6 +16,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "**.twitch**",
+      },
+      {
+        protocol: "https",
         hostname: "**.twimg.com",
       },
       {
