@@ -29,22 +29,13 @@ def post_test():
 def show():
     data = request.json
     print(data)
-    return {"test": "/test"}
+    file = yt_download.download_file(data["url"], data["type"])
+    return {"url": "http://127.0.0.1:8080/serve_file/" + file}
 
 
-@app.route("/ok", methods=["GET"])
-def test2():
-    return "Nice"
-
-
-@app.route("/download", methods=["GET"])
-def download():
-    url = "https://www.youtube.com/watch?v=kYiJqOF4PPQ"
-    try:
-        file = yt_download.download_file(url)
-        return redirect("/serve_file/" + file)
-    except:
-        return jsonify({"error": "Something is wrong, try again..."})
+@app.route("/ok/<test>", methods=["GET"])
+def test2(test):
+    return {"url": "http://127.0.0.1:8080/serve_file/" + test}
 
 
 @app.route("/serve_file/<file>")
