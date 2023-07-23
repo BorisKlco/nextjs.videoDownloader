@@ -20,10 +20,21 @@ def post_test():
     with YoutubeDL() as ydl:
         try:
             info = ydl.extract_info(data, download=False)
-            ydl.sanitize_info(info)
             return jsonify(info)
         except:
             return {"error": "Wrong URL"}
+
+
+@app.route("/showme", methods=["POST"])
+def show():
+    data = request.json
+    print(data)
+    return {"test": "/test"}
+
+
+@app.route("/ok", methods=["GET"])
+def test2():
+    return "Nice"
 
 
 @app.route("/download", methods=["GET"])

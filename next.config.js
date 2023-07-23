@@ -12,6 +12,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "**.tiktok**",
+      },
+      {
+        protocol: "https",
         hostname: "**.twimg.com",
       },
       {

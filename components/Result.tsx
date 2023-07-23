@@ -8,19 +8,22 @@ type ResultDataProps = {
     error?: string;
     id: string;
     upload_date: number;
+    title: string;
     fulltitle: string;
     thumbnail: string;
     duration: number;
+    length: number;
+    original_url: string;
   };
 };
 
 export default function Result({ data }: ResultDataProps) {
   console.log(data);
-  if (data.error) {
+  if (data.error || data.length === 0) {
     return (
       <div className="flex justify-center items-center">
         <h1 className="truncate my-4 text-xl sm:text-3xl">
-          Something woOong. {data.error}?
+          Something woOong. Try again?
         </h1>
         <Image
           src="/images/search/wrong.svg"
@@ -37,7 +40,11 @@ export default function Result({ data }: ResultDataProps) {
     <>
       <div className="py-4 px-6">
         <div className="flex justify-between text-2xl">
-          <p className="truncate max-w-2xl">{data.fulltitle}</p>
+          {!data.fulltitle ? (
+            <p className="truncate max-w-2xl">{data.title}</p>
+          ) : (
+            <p className="truncate max-w-2xl">{data.fulltitle}</p>
+          )}
           <p className="truncate max-w-fit invisible xl:visible">{videoDate}</p>
         </div>
         <div className="flex mt-4 gap-2 flex-wrap">
@@ -79,10 +86,12 @@ export default function Result({ data }: ResultDataProps) {
             ) : (
               <>
                 <div className="flex items-center justify-between gap-2 mx-auto">
-                  <p className="text-xl lg:text-2xl">Audio</p>
+                  <p className="text-xl lg:text-3xl">Audio</p>
+                  <Download url={data.original_url} type="audio" format="MP3" />
                 </div>
                 <div className="flex items-center justify-between gap-2 mx-auto">
-                  <p className="text-xl lg:text-2xl">Video</p>
+                  <p className="text-xl lg:text-3xl">Video</p>
+                  <Download url={data.original_url} type="video" format="MP4" />
                 </div>
               </>
             )}

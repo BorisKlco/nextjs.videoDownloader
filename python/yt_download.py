@@ -43,4 +43,6 @@ def download_file(url):
 
 
 if __name__ == "__main__":
-    download_file("https://www.tiktok.com/@sousty/video/7248224415056448795")
+    download_file(
+        "https://music.youtube.com/playlist?list=OLAK5uy_mbtmiD5A6u--cHAfXMek7cjmQyi3VbRhY"
+    )
