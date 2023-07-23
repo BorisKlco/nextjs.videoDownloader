@@ -5,6 +5,7 @@ import { Comic_Neue } from "next/font/google";
 import Image from "next/image";
 import ReactQueryProvider from "../providers/ReactQueryProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
+import { BsYoutube, BsTiktok, BsTwitter, BsReddit } from "react-icons/bs";
 
 const customFont = Comic_Neue({ weight: "400", subsets: ["latin"] });
 
@@ -40,7 +41,15 @@ export default function RootLayout({
                 />
                 <h1 className="text-6xl sm:text-8xl">Scrappy</h1>
               </div>
-              <h3 className="text-xl">Multisite video/audio downloader</h3>
+              <h3 className="text-xl">Multi-site video/audio downloader</h3>
+              <div className="mt-3 text-3xl flex gap-x-4">
+                <BsYoutube className="text-logo drop-shadow-sm" />
+                <p className="drop-shadow-[1px_1px_0px_rgba(255,0,0,0.75)]">
+                  <BsTiktok className="drop-shadow-[-1px_-1.5px_0px_rgba(0,250,255,0.5)]" />
+                </p>
+                <BsTwitter className="text-sky-600/70 drop-shadow-sm" />
+                <BsReddit className="text-logo drop-shadow-sm" />
+              </div>
             </section>
             {children}
           </main>

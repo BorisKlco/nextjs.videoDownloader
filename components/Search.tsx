@@ -11,7 +11,7 @@ export default function Search() {
   const resultData = result?.data ?? [];
 
   return (
-    <div className="mt-6 md:mt-16 rounded-3xl border border-black">
+    <div className="mt-6 md:mt-8 rounded-3xl border border-black">
       <div className="flex flex-col bg-search rounded-3xl w-min-16 w-full h-auto">
         <form
           className="flex relative"

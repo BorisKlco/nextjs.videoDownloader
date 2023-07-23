@@ -7,10 +7,15 @@ type ResultDataProps = {
   data: {
     error?: string;
     id: string;
+    upload_date: number;
+    fulltitle: string;
+    thumbnail: string;
+    duration: number;
   };
 };
 
 export default function Result({ data }: ResultDataProps) {
+  console.log(data);
   if (data.error) {
     return (
       <div className="flex justify-center items-center">
