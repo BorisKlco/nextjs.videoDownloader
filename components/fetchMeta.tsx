@@ -1,17 +1,15 @@
 import { ResultProps } from "@/type";
 
-export default async function fetchMeta({
-  url,
-  site,
-  tiktok = "",
-}: ResultProps) {
-  let api_url;
-  if (tiktok === "") {
-    api_url = `${process.env.LOCAL_API}/fetch_metadata/${url}?site=${site}`;
-  } else {
-    api_url = `${process.env.LOCAL_API}/fetch_metadata/${url}?tiktok=${tiktok}?site=${site}`;
-  }
-  const res = await fetch(api_url);
+export default async function fetchMeta({ url }) {
+  console.log(url);
+  if (!url) return {};
+  let res = await fetch(`http://127.0.0.1:8080/test`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(url),
+  });
 
   if (!res.ok) {
     throw new Error("API fetch failed");

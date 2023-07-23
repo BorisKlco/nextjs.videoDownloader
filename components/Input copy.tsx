@@ -3,7 +3,22 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
+
+async function handleSubmit(url: string) {
+  console.log(url);
+  const data = { url: url };
+  const response = await fetch("http://127.0.0.1:8080/test", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  //console.log(await response.json());
+}
 
 export default function Input() {
   const [url, setUrl] = useState("");
@@ -12,27 +27,30 @@ export default function Input() {
   let urlSplit;
   let idSplit;
   let finalURL;
-
   return (
     <form
       className="flex relative"
       onSubmit={(e) => {
         e.preventDefault();
-        if (url.indexOf("youtube") != -1) {
-          urlSplit = url.split("/");
-          idSplit = urlSplit[urlSplit.length - 1].split("&");
-          idSplit = idSplit[0].split("=");
-          finalURL = idSplit[idSplit.length - 1] + "?site=youtube";
-          router.push(`/${finalURL}`);
-        } else if (url.indexOf("tiktok") != -1) {
-          idSplit = url.split("@");
-          idSplit = idSplit[1].split("?");
-          idSplit = idSplit[0].split("/video/");
-          finalURL = idSplit[0] + "?tiktok=" + idSplit[1] + "?site=tiktok";
-          router.push(`/${finalURL}`);
-        } else {
-          toast.error("wOng URL? uWu🐱", { duration: 1500 });
-        }
+        //   if (url.indexOf("youtube") != -1) {
+        //     urlSplit = url.split("/");
+        //     idSplit = urlSplit[urlSplit.length - 1].split("&");
+        //     idSplit = idSplit[0].split("=");
+        //     finalURL = idSplit[idSplit.length - 1] + "?site=youtube";
+        //     router.push(`/${finalURL}`);
+        //   } else if (url.indexOf("tiktok") != -1) {
+        //     idSplit = url.split("@");
+        //     idSplit = idSplit[1].split("?");
+        //     idSplit = idSplit[0].split("/video/");
+        //     finalURL = idSplit[0] + "?tiktok=" + idSplit[1] + "?site=tiktok";
+        //     router.push(`/${finalURL}`);
+        //   } else {
+        //     toast.error("wOng URL? uWu🐱", { duration: 1500 });
+        //   }
+        // }
+        //handleSubmit(url);
+        console.log("test");
+        router.push("/test");
       }}
     >
       <input

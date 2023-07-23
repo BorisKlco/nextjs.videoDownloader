@@ -15,6 +15,18 @@ def main_route():
     return jsonify({"error": "Bad URL"}, {})
 
 
+@app.route("/test", methods=["POST"])
+def post_test():
+    data = request.json
+    with YoutubeDL() as ydl:
+        try:
+            info = ydl.extract_info(data, download=False)
+            ydl.sanitize_info(info)
+            return jsonify(info)
+        except:
+            return {"error": "Wrong URL"}
+
+
 @app.route("/tiktok", methods=["GET"])
 def tiktok():
     url = "https://www.tiktok.com/@stanleythestanman/video/7254736960290409770"

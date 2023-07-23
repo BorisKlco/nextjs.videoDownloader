@@ -1,3 +1,6 @@
 flask
 flask-cors
+Flask-SQLAlchemy
+psycopg2
+psycopg2-binary
 yt-dlp

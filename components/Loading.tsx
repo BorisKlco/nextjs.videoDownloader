@@ -1,11 +1,9 @@
 import Image from "next/image";
-import Input from "./Input";
 
 export default function Loading() {
   return (
     <div className="mt-6 md:mt-16 rounded-3xl border border-black">
       <div className="flex flex-col bg-search rounded-3xl w-min-16 w-full h-auto">
-        <Input />
         <div className="flex justify-center items-center">
           <h1 className="truncate my-4 text-xl sm:text-3xl">
             LoAd1nG.. SeRvEr go Brrr..
