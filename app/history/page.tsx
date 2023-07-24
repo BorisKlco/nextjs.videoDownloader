@@ -1,10 +1,37 @@
+import Link from "next/link";
 import Image from "next/image";
+import fetchHistory from "@/components/fetchHistory";
 
-export default function History() {
+type HistoryData = {
+  id: number;
+  title: string;
+  image: string;
+  link: string;
+};
+
+export default async function History() {
+  const data: HistoryData[] = await fetchHistory();
   return (
-    <div className="flex flex-col items-center mt-16">
-      <h1 className="text-4xl">We woOoking on it! serverGoBrrrrr</h1>
-      <Image src="images/search/vhs.svg" width={320} height={320} alt="Brr" />
-    </div>
+    <>
+      <div className="mt-6 md:mt-8 flex flex-wrap">
+        {data.map((item) => (
+          <div
+            key={item.id}
+            className="group aspect-square max-w-[16rem] p-4 mx-auto m-4 drop-shadow-lg"
+          >
+            <Link href={item.link} target="_blank">
+              <p className="truncate mb-2 ">{item.title}</p>
+              <Image
+                src={item.image}
+                width={256}
+                height={256}
+                className="object-cover aspect-square rounded-xl transition group-hover:scale-[1.025] border border-black"
+                alt="history"
+              />
+            </Link>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
