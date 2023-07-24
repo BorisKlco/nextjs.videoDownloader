@@ -63,9 +63,9 @@ export default function RootLayout({
                   <BsTiktok className="drop-shadow-[-1px_-1.5px_0px_rgba(0,250,255,0.5)]" />
                 </p>
                 <BsTwitter className="text-sky-600/70 drop-shadow-sm" />
-                <BsTwitch className="text-purple-800 drop-shadow-sm" />
+                <BsTwitch className="text-purple-700 drop-shadow-sm" />
 
-                <BsInstagram className="p-1 rounded-lg bg-gradient-to-tr from-orange-500 to-purple-600 text-white" />
+                <BsInstagram className="p-1 rounded-lg bg-gradient-to-tr from-orange-500 to-purple-600 text-white drop-shadow-sm" />
 
                 <BsReddit className="text-logo drop-shadow-sm" />
               </div>

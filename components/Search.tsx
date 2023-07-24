@@ -49,13 +49,14 @@ export default function Search() {
             type="text"
             name="url"
             className="group text-l md:text-xl px-6 focus:underline rounded-3xl 
-            h-[3rem] w-full bg-input focus:outline-none placeholder:text-green-900/30 border border-black/40 placeholder:no-underline"
+            h-[3rem] w-full bg-input placeholder:text-green-900/30 outline outline-1 outline-black placeholder:no-underline"
           />
           <button
             className="absolute flex justify-center items-center h-full right-0 text-xl md:text-3xl 
             pl-4 pr-2 rounded-full bg-button hover:bg-logo
-            hover:outline hover:outline-1 hover:outline-black
-            transition border border-black text-white"
+            hover:outline-2
+            outline outline-1 outline-black
+            transition  text-white"
           >
             Search
             <Image
