@@ -18,7 +18,8 @@ type ResultDataProps = {
 };
 
 export default function Result({ data }: ResultDataProps) {
-  if (data.error || data.length === 0) {
+  console.log(data);
+  if (data.error || !data.title) {
     return (
       <div className="flex justify-center items-center">
         <h1 className="truncate my-4 text-xl sm:text-3xl">

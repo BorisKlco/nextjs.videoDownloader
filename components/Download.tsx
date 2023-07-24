@@ -32,27 +32,32 @@ export default function Download({ url, type, format }: DownloadProps) {
           <AiOutlineLoading className="animate-spin text-white drop-shadow-md" />
         </button>
       ) : link.isFetched ? (
-        <button
-          className="flex gap-x-2 items-center justify-center 
+        <>
+          <span className="hidden">
+            {toast("File is ready!", { icon: "🥳", duration: 2000 })}
+          </span>
+          <button
+            className="flex gap-x-2 items-center justify-center 
     bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] 
-    rounded-full text-sm md:text-xl font-semibold 
+    rounded-full text-sm md:text-xl font-semibold  
     border border-black/40 transition 
     hover:bg-logo hover:border-black hover:border-2"
-        >
-          <a href={linkData.url}>Download</a>
-          <Image
-            className="object-fit"
-            src="/images/search/download.svg"
-            width={32}
-            height={32}
-            alt="download"
-          />
-        </button>
+          >
+            <a href={linkData.url}>Download</a>
+            <Image
+              className="object-fit"
+              src="/images/search/download.svg"
+              width={32}
+              height={32}
+              alt="download"
+            />
+          </button>
+        </>
       ) : (
         <button
           onClick={() => {
             link.refetch();
-            toast.success("Preparing it for uWu.. 🐱");
+            toast.success("Preparing it for uWu.. 🐱", { duration: 2000 });
           }}
           className="flex items-center justify-center 
       bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] 

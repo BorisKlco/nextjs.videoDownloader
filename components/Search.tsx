@@ -11,7 +11,7 @@ export default function Search() {
   const result = useQuery(["url", url], fetchData, { enabled: !!url });
   const resultData = result?.data ?? [];
   const supportedSites = [
-    "youtube",
+    "youtu",
     "tiktok",
     "instagram",
     "twitch",
@@ -36,12 +36,12 @@ export default function Search() {
               if (extractURL.indexOf("list") === -1) {
                 setUrl(extractURL);
               } else {
-                toast.error("Playlist not supported..uWu🐱", {
+                toast.error("Playlist not supported..uWu!", {
                   duration: 2000,
                 });
               }
             } else {
-              toast.error("wOng URL? uWu🐱", { duration: 2000 });
+              toast.error("wOng URL? uWu?", { duration: 2000 });
             }
           }}
         >
