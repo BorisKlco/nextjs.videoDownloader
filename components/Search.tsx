@@ -10,7 +10,14 @@ export default function Search() {
   const [url, setUrl] = useState<String>("");
   const result = useQuery(["url", url], fetchData, { enabled: !!url });
   const resultData = result?.data ?? [];
-  const supportedSites = ["youtube", "tiktok", "twitch", "twitter", "reddit"];
+  const supportedSites = [
+    "youtube",
+    "tiktok",
+    "instagram",
+    "twitch",
+    "twitter",
+    "reddit",
+  ];
 
   function checkSupported(userInput: String) {
     return supportedSites.some((item) => userInput.includes(item));

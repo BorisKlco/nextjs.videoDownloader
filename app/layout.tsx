@@ -11,6 +11,7 @@ import {
   BsTwitter,
   BsReddit,
   BsTwitch,
+  BsInstagram,
 } from "react-icons/bs";
 
 const customFont = Comic_Neue({ weight: "400", subsets: ["latin"] });
@@ -18,8 +19,16 @@ const customFont = Comic_Neue({ weight: "400", subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Scrappy🐱 - audio, video, thumbnail downloader",
   description:
-    "Do you need download youtube, twitch, tiktok, twitter, reddit, etc.. etc.. video, mp3, webm, mp4 formats, jpg thumbnail downloader...",
-  keywords: ["tiktok", "youtube", "twitter", "twitch", "reddit", "download"],
+    "Do you need download youtube, twitch, tiktok, twitter, instagram, reddit, etc.. etc.. video, mp3, webm, mp4 formats, jpg thumbnail downloader...",
+  keywords: [
+    "tiktok",
+    "youtube",
+    "twitter",
+    "instagram",
+    "twitch",
+    "reddit",
+    "download",
+  ],
 };
 
 export default function RootLayout({
@@ -50,6 +59,7 @@ export default function RootLayout({
               <h3 className="text-xl">Multi-site video/audio downloader</h3>
               <div className="mt-3 text-3xl flex gap-x-4">
                 <BsYoutube className="text-logo drop-shadow-sm" />
+                <BsInstagram className="text-orange-400" />
                 <p className="drop-shadow-[1px_1px_0px_rgba(255,0,0,0.75)]">
                   <BsTiktok className="drop-shadow-[-1px_-1.5px_0px_rgba(0,250,255,0.5)]" />
                 </p>
