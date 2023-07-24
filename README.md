@@ -5,5 +5,5 @@ next.js + Flask API + SQLAlchemy
 
 
 <p align="center">
-  <img src="https://i.imgur.com/1UvLP0n.jpeg" style="width:100%" />
+  <img src="https://i.imgur.com/lNqFxhp.jpeg" style="width:100%" />
 </p>
