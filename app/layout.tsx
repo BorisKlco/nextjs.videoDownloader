@@ -1,4 +1,3 @@
-import { Navbar } from "@/components";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Comic_Neue } from "next/font/google";
@@ -13,6 +12,7 @@ import {
   BsTwitch,
   BsInstagram,
 } from "react-icons/bs";
+import Navbar from "@/components/Navbar";
 
 const customFont = Comic_Neue({ weight: "400", subsets: ["latin"] });
 
@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${customFont.className} bg-main flex min-h-screen flex-col items-center antialiased`}
+        className={`${customFont.className} bg-main flex min-h-screen flex-col items-center overflow-x-hidden antialiased`}
       >
         <ToasterProvider />
         <ReactQueryProvider>

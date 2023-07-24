@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import fetchHistory from "@/components/fetchHistory";
+import { Suspense } from "react";
 
 type HistoryData = {
   id: number;
@@ -23,8 +24,10 @@ export default async function History() {
               <p className="truncate mb-2 ">{item.title}</p>
               <Image
                 src={item.image}
+                loading="lazy"
                 width={256}
                 height={256}
+                quality={50}
                 className="object-cover aspect-square rounded-xl transition group-hover:scale-[1.025] border border-black"
                 alt="history"
               />

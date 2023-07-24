@@ -33,17 +33,15 @@ export default function Download({ url, type, format }: DownloadProps) {
         </button>
       ) : link.isFetched ? (
         <>
-          <span className="hidden">
-            {toast("File is ready!", { icon: "🥳", duration: 2000 })}
-          </span>
-          <button
+          <a
             className="flex gap-x-2 items-center justify-center 
     bg-button max-sm:w-[10rem] w-[12rem] h-[3rem] 
     rounded-full text-sm md:text-xl font-semibold  
     border border-black/40 transition 
     hover:bg-logo hover:border-black hover:border-2"
+            href={linkData.url}
           >
-            <a href={linkData.url}>Download</a>
+            Download
             <Image
               className="object-fit"
               src="/images/search/download.svg"
@@ -51,7 +49,7 @@ export default function Download({ url, type, format }: DownloadProps) {
               height={32}
               alt="download"
             />
-          </button>
+          </a>
         </>
       ) : (
         <button

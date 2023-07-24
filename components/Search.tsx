@@ -1,10 +1,10 @@
 "use client";
-import { Result } from ".";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchData from "./fetchData";
 import toast from "react-hot-toast";
+import Result from "./Result";
 
 export default function Search() {
   const [url, setUrl] = useState<String>("");

@@ -18,7 +18,6 @@ type ResultDataProps = {
 };
 
 export default function Result({ data }: ResultDataProps) {
-  console.log(data);
   if (data.error || !data.title) {
     return (
       <div className="flex justify-center items-center">
