@@ -1,5 +1,7 @@
-# nextjs.ytmp3
-Youtube video/audio/thumbnail downloader
+# nextjs.videoDownloader
+Multi-site video/audio downloader , mp3/mp4 formats.
+
+next.js + Flask API + SQLAlchemy
 
 
 <p align="center">
