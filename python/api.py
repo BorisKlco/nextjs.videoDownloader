@@ -41,7 +41,7 @@ def history():
 
 
 @app.route("/extract_info", methods=["POST"])
-def post_test():
+def extract_info():
     data = request.json
     with YoutubeDL() as ydl:
         try:
@@ -71,7 +71,7 @@ def post_test():
 
 
 @app.route("/get_me_link", methods=["POST"])
-def show():
+def get_download_link():
     data = request.json
     print(data)
     file = download.get_file(data["url"], data["type"])
@@ -79,7 +79,7 @@ def show():
 
 
 @app.route("/serve_file/<file>")
-def dynamic_redirect(file):
+def serve_file(file):
     path = os.getcwd()
     download_file = path + "/files/" + file
     return send_file(download_file, as_attachment=True)
