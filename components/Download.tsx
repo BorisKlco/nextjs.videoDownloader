@@ -2,7 +2,7 @@
 import toast from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import fetchLink from "./fetchLink";
-import { AiOutlineLoading } from "react-icons/Ai";
+import { AiOutlineLoading } from "react-icons/ai";
 import Image from "next/image";
 
 type DownloadProps = {
