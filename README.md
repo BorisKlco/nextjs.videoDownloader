@@ -33,6 +33,7 @@ def get_download_link():
 ```
 3. set default app port in package.json
 ```
+npm run build (first start python api server)
 "start": "next start -p 8090",
 ```
 4. npm run build
