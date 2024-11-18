@@ -21,6 +21,15 @@ This is used on client side. So you want to create reverse proxy for api.py port
 
 /components/fetchHistory.tsx
 This is fetched from server side.. So you can use localhost.
+
+/python/api.py
+Link for download for client.
+@app.route("/get_me_link", methods=["POST"])
+def get_download_link():
+    data = request.json
+    print(data)
+    file = download.get_file(data["url"], data["type"])
+    return {"url": "{(for example: api.domain.tld)}/serve_file/" + file} 
 ```
 3. set default app port in package.json
 ```
